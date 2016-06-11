@@ -1,0 +1,607 @@
+/* normalize and html5 reset mix */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, progress,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+li{
+  list-style: none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+/* Prevent `sub` and `sup` affecting `line-height` in all browsers. */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* Remove border when inside `a` element in IE 8/9/10. */
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+
+/* Contain overflow in all browsers. */
+pre {
+  overflow: auto;
+}
+
+/* Address odd `em`-unit font size rendering in all browsers. */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+  cursor: pointer; /* 3 */
+}
+
+/* Re-set default cursor for disabled elements.*/
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/*  Remove inner padding and border in Firefox 4+. */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
+
+input[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box; /* 2 */
+  box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/* global settings */
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html, body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+
+body {
+	font-family: 'lato', serif;
+	font-weight:400;
+	font-size:62.5%;
+	line-height: 1em;
+	color:#323232;
+	overflow: scroll;
+}
+
+*:first-child+html body {
+	overflow: visible;
+}
+
+img,
+video,
+object {
+	width:100%;
+}
+
+img,
+video {
+	height:auto;
+}
+
+object{
+	height:100%;
+}
+
+a,
+a:hover {
+	text-decoration:none;
+}
+
+a {
+	color:#000;
+}
+
+a:hover {
+	color:#323232;
+}
+
+
+p {
+	font-size:1em;
+	margin:0 0 2.6em 0;
+}
+
+p,
+h2 {
+	line-height:1.2em;
+}
+
+input:focus {
+	outline: 0;
+}
+
+a:focus {
+	outline: 0;
+}
+
+/* Reset HTML5 Search Input in Webkit */
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration,
+input[type=search]::-webkit-search-results-button,
+input[type=search]::-webkit-search-results-decoration {
+  -webkit-appearance:none;
+}
+input[type=search] {
+  -webkit-appearance:textfield;
+  -webkit-box-sizing:content-box;
+ }
+
+/* global transition time */
+a {
+	transition:all 0.3s ease-in-out;
+	-webkit-transition:all 0.3s ease-in-out;
+	-moz-transition:all 0.3s ease-in-out;
+}
+
+#main-wrapper,
+.center {
+  margin:auto;
+}
+
+#main-wrapper {
+  max-width:192em;
+  width:100%;
+}
+
+#main-wrapper,
+header,
+nav,
+main,
+section,
+article,
+.center,
+aside,
+footer .content-wrapper {
+   position:relative;
+}
+
+#main-wrapper,
+main {
+   min-height:100%;
+}
+
+header,
+main,
+section,
+article,
+aside,
+footer {
+	width:100%;
+}
+
+.center {
+    float:none;
+    width:85%;
+}
+
+.txt_center {
+    text-align:center;
+}
+
+main,
+footer .content-wrapper {
+	overflow:hidden;
+}
+
+footer {
+	position:absolute;
+	left:0;
+	bottom:0;
+}
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
+/*Body*/
+body{
+  /*Background*/
+  background-image: url(../images/main/background1.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+
+/*Header*/
+/*Header goes above de main page*/
+header{
+  z-index: 1;
+  /*Dimentions*/
+  height: 10em;
+
+  /*Position*/
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background-color: rgba(29, 37, 99, 0.8);
+}
+
+/**********NavBar**********/
+.nav{
+    height: 100%;
+    width: 100%;
+    display: table;
+}
+
+/*NavBar items*/
+.nav li{
+  /*Position*/
+  float: left;
+  padding-top: 0.7em;
+  list-style-type: none;
+
+  /*Text*/
+  text-align: center;
+  font-size: 6em;
+  color: #fff;
+
+  /*Dimentions*/
+  height: 100%;
+  width: 33.33%;
+}
+
+.nav li a{
+  color: #fff;
+}
+
+.nav li.settingsIcon{
+  padding-top: 0.3em;
+  padding-right: 1em;
+  text-align: right;
+  display: block;
+  transition: .4s ease-in-out;
+}
+
+.nav .settingsIcon a{
+  float: right;
+  display: table;
+  text-align: center;
+}
+
+.nav .settingsIcon a i{
+  display: table-cell;
+  transition: .4s ease-in-out;
+  width: 1em;
+  height: 1em;
+}
+
+.nav .settingsIcon a:hover i{
+  transition: 1s ease-in-out;
+  transform: rotate(360deg);
+}
+
+
+
+/*Main*/
+main{
+  z-index: 0;
+  /*Dimentions*/
+  min-height: 52em;
+
+  /*Position*/
+
+  margin-bottom: 10em;
+
+  /*Temps*/
+  /*border: 5px solid white;*/
+  overflow: hidden;
+  text-align: center;
+}
+
+.principal{
+  height: 85em;
+  width: 100%;
+  padding: 2em 2em 2em 2em;
+  padding-top: 11em;
+  border: 4px solid white;
+}
+
+/**********Icons**********/
+.icons{
+  min-height: 57em;
+  width: 100%;
+}
+
+.icons li{
+  display: table;
+  overflow: hidden;
+
+
+  /*Dimentions*/
+  width: 20em;
+  height: 20em;
+  border-radius: 50%; /*makes the list item round*/
+  border: 4px solid white;
+  float: left;
+  margin: 1em 1em 1em 1em;
+
+  transition: .5s ease-in-out;
+}
+
+.icons li a{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  font-size: 14em;
+  transition: .5s ease-in-out;
+}
+
+.icons li:hover{
+  border: 4px solid black;
+
+}
+
+.icons li:hover a{
+  color: black;
+}
+
+
+
+/*Footer*/
+footer{
+  z-index: 1;
+  /*Dimentions*/
+  height: 5em;
+
+  /*Position*/
+  position: fixed;
+  bottom: 0;
+
+  background-color: rgba(29, 37, 99, 0.8);
+  display: table;
+  text-align: center;
+}
+
+footer a {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 4em;
+  color: white;
+}
+
+
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
+/* media queries */
+@media only screen and (max-width: 1024px) {
+	.center {
+		width:90%;
+	}
+}
+
+@media only screen and (max-width: 680px) {
+	.center {
+		width:95%;
+	}
+}
+
+@media only screen and (max-width:480px) {
+header .center {
+    width:100%;
+}
+
+    h1.logo {
+        margin:0 0 0 2.5%;
+    }
+
+    header nav {
+		position:relative;
+		float:left;
+		margin:1em 0 0 0;
+    }
+
+	header nav ul {
+		display:none;
+		border-top:1px solid #ccc;
+		background:#f0f0f0;
+	}
+
+	header nav,
+    header nav ul {
+        height:auto;
+    }
+
+	header nav,
+    header nav ul,
+	header nav ul li{
+        width: 100%;
+    }
+
+
+    header nav ul li {
+		clear:both;
+        border-bottom:1px solid #ccc;
+    }
+
+    header nav ul a {
+        text-align: left;
+    }
+
+	header a.pull {
+		position: absolute;
+        top:-2em;
+        right:2.5%;
+        font-size:3em;
+        color:#333;
+        display:inline-block;
+
+    }
+
+    header a.pull:hover {
+        color:#000;
+    }
+
+}

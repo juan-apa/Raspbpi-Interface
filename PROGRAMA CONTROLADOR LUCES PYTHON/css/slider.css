@@ -1,0 +1,64 @@
+/*SIMPLE ON OFF SLIDER IN HTML CSS*/
+/*To use the slider, simply copy de html code where you want it, and set
+the height and width of the .slider, with a relation of 2:1*/
+
+.slider .circle{
+  height: 100%;
+  width: 50%;
+  background-color: #AAA;
+  border-radius: 50%;
+  float: left;
+  border: 1px solid black;
+  margin-top: -45%;
+  transition: .3s ease-in-out;
+  box-shadow: inset 0 0 3px #fff;
+}
+
+.slider .line{
+  height: 80%;
+  width: 80%;
+  background-color: #1a75ff;
+  border-radius: 9999em;
+  float: left;
+  margin-left: 10%;
+  overflow: hidden;
+  box-shadow: inset 0 0 3px #000;
+  border: 1px solid black;
+}
+
+.slider .line .second_half{
+  background-color: #565656;
+  height: 100%;
+  width: 50%;
+  float: right;
+  border-radius: 0 9999em 9999em 0;/*Same border radius as .slider .line*/
+  box-shadow: inset 0 0 3px #000; /*Same box shadow as /.slider .line*/
+}
+
+.ON .circle{
+  margin-left: 40%;
+}
+
+.OFF .circle{
+  margin-left: 10%;
+}
+
+.slider.ON:hover .circle{
+  transform: translateX(-60%);
+}
+
+.slider.OFF:hover .circle{
+  transform: translateX(60%);
+}
+
+/*IMPLEMENTATION IN HTML*/
+/*
+<div class="slider ON">
+  <div class="line">
+    <div class="second_half">
+    </div>
+  </div>
+  <div class="circle">
+  </div>
+</div>
+*/
