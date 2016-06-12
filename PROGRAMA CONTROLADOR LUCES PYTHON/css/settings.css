@@ -20,7 +20,7 @@
 }
 
 .settings ul li{
-  padding: 1em 3em 1em 1em;
+  padding: 1em 1em 1em 1em;
   height: 3em;
   line-height: 1em;
   font-size: 3em;
@@ -55,7 +55,7 @@
 .settings .sections li{
   width: 100%;
   /*border: 1px solid black;*/
-  padding-right: 1em;
+  
 }
 
 .sections li a{
