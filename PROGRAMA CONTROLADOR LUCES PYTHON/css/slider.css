@@ -42,7 +42,8 @@ the height and width of the .slider, with a relation of 2:1*/
 .OFF .circle{
   margin-left: 10%;
 }
-
+/*Hover animations*/
+/*
 .slider.ON:hover .circle{
   transform: translateX(-60%);
 }
@@ -50,7 +51,7 @@ the height and width of the .slider, with a relation of 2:1*/
 .slider.OFF:hover .circle{
   transform: translateX(60%);
 }
-
+*/
 /*IMPLEMENTATION IN HTML*/
 /*
 <div class="slider ON">
