@@ -265,7 +265,6 @@ a:hover {
 	color:#323232;
 }
 
-
 p {
 	font-size:1em;
 	margin:0 0 2.6em 0;
@@ -352,12 +351,6 @@ main,
 footer .content-wrapper {
 	overflow:hidden;
 }
-
-footer {
-	position:absolute;
-	left:0;
-	bottom:0;
-}
 /******************************************************************************/
 /******************************************************************************/
 /******************************************************************************/
@@ -368,8 +361,8 @@ body{
   background-size: cover;
   background-attachment: fixed;
   font-family: 'Open Sans', sans-serif;
+  overflow: hidden; /*Esconde las barras de scrolleo*/
 }
-
 
 
 /*Header*/
@@ -460,7 +453,7 @@ main{
 }
 
 .principal{
-  height: 85em;
+  height: 67em;
   width: 100%;
   padding: 2em 2em 2em 2em;
   padding-top: 11em;
@@ -518,6 +511,7 @@ footer{
   /*Position*/
   position: fixed;
   bottom: 0;
+  left: 0;
 
   background-color: rgba(29, 37, 99, 0.8);
   display: table;
