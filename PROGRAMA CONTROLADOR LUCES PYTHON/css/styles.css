@@ -434,9 +434,16 @@ header{
   transform: rotate(360deg);
 }
 
+.principal{
+  overflow-y: scroll;
+}
 
 
 /*Main*/
+section{
+  margin-top: 10em;
+}
+
 main{
   z-index: 0;
   /*Dimentions*/
@@ -448,21 +455,22 @@ main{
 
   /*Temps*/
   /*border: 5px solid white;*/
-  overflow: hidden;
+  /*overflow: hidden;*/
   text-align: center;
 }
 
 .principal{
+  display: none;
   height: 67em;
   width: 100%;
   padding: 2em 2em 2em 2em;
-  padding-top: 11em;
+  /*padding-top: 11em;*/
   border: 4px solid white;
 }
 
 /**********Icons**********/
 .icons{
-  min-height: 57em;
+  height: 100%;
   width: 100%;
 }
 
@@ -523,6 +531,11 @@ footer a {
   vertical-align: middle;
   font-size: 4em;
   color: white;
+}
+
+footer a #home{
+  width: 100%;
+  height: 100%;
 }
 
 

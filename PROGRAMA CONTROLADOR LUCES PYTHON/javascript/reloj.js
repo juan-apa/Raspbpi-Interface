@@ -1,9 +1,16 @@
+var relojPantalla= $('.nav .clock');
+var horaActual;
+var horas;
+var minutos;
+var segundos;
+
+
 function relojDigital(){
-  var relojPantalla= $('.nav .clock');
-  var horaActual= new Date();
-  var horas= horaActual.getHours();
-  var minutos= horaActual.getMinutes();
-  var segundos= horaActual.getSeconds();
+  relojPantalla= $('.nav .clock');
+  horaActual= new Date();
+  horas= horaActual.getHours();
+  minutos= horaActual.getMinutes();
+  segundos= horaActual.getSeconds();
 
   if(minutos<= 9){
     minutos= '0'+ minutos;

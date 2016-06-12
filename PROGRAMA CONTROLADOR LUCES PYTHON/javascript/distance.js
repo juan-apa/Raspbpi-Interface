@@ -2,9 +2,11 @@
   and start of footer, to dynamically resize
   sections*/
 
+  var distance;
+
   function distanceHeaderFooter(){
     var header= $('header');
     var footer= $('footer');
-    var distance= header.offset().top - footer.offset().top;
+    distance= header.offset().top - footer.offset().top;
     return distance;
   }
