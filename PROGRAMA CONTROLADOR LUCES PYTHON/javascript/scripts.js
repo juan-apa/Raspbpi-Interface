@@ -7,6 +7,9 @@ $(document).on('ready', function(){
   sett_look_feel= $('.settings ul.look_feel'); //menu con el contenido de look_feel
   sett_lights_settings= $('.settings ul.lights_settings'); //menu con el contenido de lights_settings
 
+  /*Seteo la hora del reloj*/
+  relojDigital();
+
   /*Set selectedSetting background to the clicked item in the
   left side menu in settings*/
   $(sett_menuIzqElements).on('click', function(e){
