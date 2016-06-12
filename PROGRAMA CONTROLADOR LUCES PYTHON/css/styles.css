@@ -361,6 +361,7 @@ body{
   background-size: cover;
   background-attachment: fixed;
   font-family: 'Open Sans', sans-serif;
+  overflow: hidden; /*Esconde las barras de scrolleo*/
 }
 
 
@@ -452,7 +453,7 @@ main{
 }
 
 .principal{
-  height: 85em;
+  height: 67em;
   width: 100%;
   padding: 2em 2em 2em 2em;
   padding-top: 11em;

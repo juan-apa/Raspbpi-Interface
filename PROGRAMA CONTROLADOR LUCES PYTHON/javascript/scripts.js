@@ -1,6 +1,8 @@
 $(document).on('ready', function(){
   //Elements with which i am going to interact
+  principal= $('.principal');
   sliders= $('div.slider'); //sliders
+  sett_sett= $('.settings');
   sett_menus= $('.settings ul');
   sett_menuIzq= $('.settings ul.sections');
   sett_menuIzqElements= $('.settings ul.sections li'); //elementos del menu izq de las opciones
@@ -9,6 +11,8 @@ $(document).on('ready', function(){
 
   /*Seteo la hora del reloj*/
   relojDigital();
+  /*Seteo el tamaño de las pantallas*/
+  setScreenSize();
 
   /*Set selectedSetting background to the clicked item in the
   left side menu in settings*/
@@ -57,5 +61,15 @@ $(document).on('ready', function(){
       $(sliderClickeado).addClass('ON')
     }
   });
-
 });
+
+$(window).resize(function(){
+  setScreenSize();
+});
+
+/*Auxiliary functions*/
+function setScreenSize(){
+  var alto= (distanceHeaderFooter()/(-10)+'em');
+  $(sett_sett).css('height', alto);
+  $(principal).css('height', alto);
+}
