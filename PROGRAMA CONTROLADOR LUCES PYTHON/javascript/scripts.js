@@ -6,12 +6,13 @@ $(document).on('ready', function(){
   principal= $('.principal');
   sliders= $('div.slider'); //sliders
   sett_sett= $('.settings');
-  sett_menus= $('.settings ul');
-  sett_menuIzq= $('.settings ul.sections');
-  sett_menuIzqElements= $('.settings ul.sections li'); //elementos del menu izq de las opciones
-  sett_look_feel= $('.settings ul.look_feel'); //menu con el contenido de look_feel
-  sett_lights_settings= $('.settings ul.lights_settings'); //menu con el contenido de lights_settings
-  sett_weather_settings= $('.settings ul.weather_settings'); //menu con el contenido de weather_settings
+  sett_menus= $('.settings article ul');
+  sett_menuIzq= $('.settings article ul.sections');
+  sett_menuIzqElements= $('.settings article ul.sections li'); //elementos del menu izq de las opciones
+  sett_look_feel= $('.settings article ul.look_feel'); //menu con el contenido de look_feel
+  sett_lights_settings= $('.settings article ul.lights_settings'); //menu con el contenido de lights_settings
+  sett_weather_settings= $('.settings article ul.weather_settings'); //menu con el contenido de weather_settings
+  sett_colours= $('#sett_colours a');
 
 
 
@@ -44,11 +45,25 @@ $(document).on('ready', function(){
   var altoPantalla= getScreenHeight();
   var anchoIconos= getIconsWidth();
   var anchoUlIconos= getIconsUlWidth();
+  var cantidadDeIconosReal= getIconsQuantity();
+
+  /*This is used for showing the submenus in the settings menus*/
+  var actualState= 'folded';
 
 
   goHome();
   /*Set selectedSetting background to the clicked item in the
   left side menu in settings*/
+
+  onStart();
+  function onStart(){
+    /*This is for hiding the menu sections that are not selected at first*/
+    for (var i = 1; i < sett_screens.length; i++) {
+      $(sett_screens[i]).css('display', 'none');
+    }
+  }
+
+
   $(sett_menuIzqElements).on('click', function(e){
     e.preventDefault();
     var itemClickeado= $(this);
@@ -75,9 +90,38 @@ $(document).on('ready', function(){
           i++;
         }
       }
+      if(contenido== sett_options[0]){
+        if($('.settings article ul li ul.colourChange').hasClass('unfold')){
+          $('.settings article ul li ul.colourChange').css('display', 'block');
+        }
+        else{
+          $('.settings article ul li ul.colourChange').css('display', 'none');
+        }
+      }
     }
+
+
+
+  });
+  $('a').on('click', function(e){
+    e.preventDefault();
   });
 
+  /*Ultra magic mega functional function*/
+  $('.settings article ul li.sett_colours a').on('click', function(e){
+    e.preventDefault();
+
+    $('.settings article ul li ul.colourChange').toggleClass('unfold');
+    if($('.settings article ul li ul.colourChange').hasClass('unfold')){
+      $('.settings article ul li ul.colourChange').css('display', 'block');
+    }
+    else{
+      $('.settings article ul li ul.colourChange').css('display', 'none');
+    }
+
+
+
+  });
 
 
   $(sliders).on('click', function(e){
@@ -134,6 +178,8 @@ function setScreenSize(){
 }
 
 function setIconsPosition(){
+  var cantIconReal= getIconsQuantity();
+
   /*Recalculo el ancho del ul.icons y el ancho de los iconos en si*/
   anchoIconos= getIconsWidth();
 
@@ -145,7 +191,8 @@ function setIconsPosition(){
   /*mientras que el numero que voy sumando sea menor al ancho del ul.icons*/
   /*Tengo quye agregar la condicion de salida del while para que:
     cantidad< cantidadIconosQueTengo*/
-  while(aux< anchoUlIconos){
+  console.log(getIconsQuantity());
+  while(aux< anchoUlIconos && cantidad<= cantIconReal){
     aux= aux+ anchoIconos;
     cantidad= cantidad+ 1;
   }
@@ -235,4 +282,8 @@ function getIconsWidth(){
 
 function getIconsUlWidth(){
   return $('.icons').first().outerWidth(true);
+}
+
+function getIconsQuantity(){
+  return $('.icons li').length;
 }
