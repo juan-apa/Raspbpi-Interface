@@ -143,7 +143,8 @@ function setIconsPosition(){
   /*tengo que inicializar aux en 0, porque le voy a sumar cosas*/
   var aux= 0;
   /*mientras que el numero que voy sumando sea menor al ancho del ul.icons*/
-
+  /*Tengo quye agregar la condicion de salida del while para que:
+    cantidad< cantidadIconosQueTengo*/
   while(aux< anchoUlIconos){
     aux= aux+ anchoIconos;
     cantidad= cantidad+ 1;
