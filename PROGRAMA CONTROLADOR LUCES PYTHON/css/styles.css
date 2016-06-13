@@ -440,6 +440,9 @@ header{
 
 
 /*Main*/
+.principal article{
+  height: 100%;
+}
 section{
   margin-top: 10em;
 }
@@ -475,7 +478,7 @@ main{
 }
 
 .icons li{
-  display: table;
+  /*display: table;*/
   overflow: hidden;
 
 
@@ -491,12 +494,22 @@ main{
 }
 
 .icons li a{
-  display: table-cell;
-  vertical-align: middle;
+  display: table;
+  /*vertical-align: middle;*/
   text-align: center;
   color: white;
   font-size: 14em;
   transition: .5s ease-in-out;
+  height: 100%;
+  width: 100%;
+}
+
+.icons li a i{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  height: 100%;
+  width: 100%;
 }
 
 .icons li:hover{

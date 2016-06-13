@@ -1,3 +1,4 @@
+current_screen= $('.principal');
 $(document).on('ready', function(){
   //Elements with which i am going to interact
   btn_settings= $('header ul li.settingsIcon a');
@@ -12,7 +13,7 @@ $(document).on('ready', function(){
   sett_lights_settings= $('.settings ul.lights_settings'); //menu con el contenido de lights_settings
   sett_weather_settings= $('.settings ul.weather_settings'); //menu con el contenido de weather_settings
 
-  current_screen= $('.principal');
+
 
 
   /*Al estar esto hardcoded, el algoritmo funciona sin tener que agregar nuevos if/else
@@ -25,12 +26,25 @@ $(document).on('ready', function(){
   var array_pantallas= [principal, sett_sett];
 
 
-  /*Seteo la hora del reloj*/
+  /*Tengo que iniciar el reloj, porque es una funcion recursiva infinita
+    una vez iniciado, va a seguir hasta que se cierre la pagina*/
   relojDigital();
-  /*Seteo el tamaño de las pantallas*/
+
+  /*Seteo el tamaño de las pantallas (secciones)*/
   setScreenSize();
 
+  setIconsPosition();
+
+  /*Tengo que inicializar las variables, para que cuando inicio la pagina por
+    primera vez, ya tengo las medidas de la pantalla, de lo contrario, tendria
+    que redimensionar la pantalla al menos una vez, para que todo quede a medida
+    y en posicion correcta*/
   var alturaHeader= getheaderHeight();
+  var anchoPantalla= getScreenWidth();
+  var altoPantalla= getScreenHeight();
+  var anchoIconos= getIconsWidth();
+  var anchoUlIconos= getIconsUlWidth();
+
 
   goHome();
   /*Set selectedSetting background to the clicked item in the
@@ -46,7 +60,6 @@ $(document).on('ready', function(){
       $(this).addClass('selectedSetting');
       var contenido= $(this).text();
       contenido= contenido.trim();
-      console.log(contenido.trim());
 
       var encontrado= false;
       var i= 0;
@@ -90,7 +103,6 @@ $(document).on('ready', function(){
 
   $(btn_settings).on('click', function(e){
     e.preventDefault();
-    console.log('boton apretado');
     goToSettings();
   });
 
@@ -102,10 +114,14 @@ $(window).resize(function(){
   alturaHeader= getheaderHeight();
   setScreenSize();
   stayInPosition();
-
-  console.log('settings: '+ $('.settings').offset().top);
-  console.log('principal: '+ $('.principal').offset().top);
-  console.log('distancia H/F: '+ distance);
+  /*Si la pantalla en la que estoy es la principal, entonces hago los
+    calculos para centrar los iconos del ul.icons*/
+  /*Como los elementos $() son objetos de jquery, no son exactamente iguales siempre
+    Al ser objetos, puedo tomarlos como un array, y la posicion 0 es siempre la misma
+    para dos $() iguales, por eso comparo current_screen[0] con $('.principal')[0]*/
+  if(current_screen[0]== $('.principal')[0]){
+      setIconsPosition();
+  }
 
 });
 
@@ -115,6 +131,41 @@ function setScreenSize(){
 
   $(sett_sett).css('height', alto);
   $(principal).css('height', alto);
+}
+
+function setIconsPosition(){
+  /*Recalculo el ancho del ul.icons y el ancho de los iconos en si*/
+  anchoIconos= getIconsWidth();
+
+  anchoUlIconos= getIconsUlWidth();
+  /*calculo la cantidad de iconos que puedo poner en la pantalla*/
+  var cantidad= 0;
+  /*tengo que inicializar aux en 0, porque le voy a sumar cosas*/
+  var aux= 0;
+  /*mientras que el numero que voy sumando sea menor al ancho del ul.icons*/
+
+  while(aux< anchoUlIconos){
+    aux= aux+ anchoIconos;
+    cantidad= cantidad+ 1;
+  }
+  /*Si sali del while, signica que me pase, entonces tengo que restar
+    1 a la cantidad de iconos que puedo poner en una hilera en el ul*/
+  cantidad= cantidad- 1;
+  /*como se el ancho de los iconos y la cantidad de iconos, puedo calcular el
+    ancho que me ocuparia esa cantida*/
+  var anchoIconosHilera= cantidad* anchoIconos;
+  /*calculo la delta para poner el espacio antes del primer y despues del
+    ultimo icono*/
+  /*A su vez cada icono tiene margenes de los 2 costados, los cuales son 1 em*/
+  anchoIconosHilera= anchoIconosHilera+ cantidad*(2); //pongo 2, porque son 2 em y estoy trabajando en em
+  var delta= anchoUlIconos- anchoIconosHilera;
+  delta= delta;
+  var margenCostado= delta/ 2;
+
+  /*Aplico el margen calculado a ambos lados del ul*/
+  $('.icons').css('padding-left', margenCostado);
+  $('.icons').css('padding-right', margenCostado);
+
 }
 
 function stayInPosition(){
@@ -155,10 +206,32 @@ function goHome(){
   /*set the current screen as HOME*/
   current_screen= $('.principal');
 
-  //onsole.log(alto);
+  /*En el caso de que haya redimensionado la ventana mientras que no estaba en
+    la ventana principal, entonces calculo la nueva alineacion de los iconos de
+    ul.icons li*/
+    setIconsPosition();
+
+
+  //console.log(alto);
 }
 
 function getheaderHeight(){
   var altura= $('header').height();
   return altura;
+}
+
+function getScreenWidth(){
+  return $(window).width();
+}
+
+function getScreenHeight(){
+  return $(window).height();
+}
+
+function getIconsWidth(){
+  return $('.icons li').outerWidth(true);
+}
+
+function getIconsUlWidth(){
+  return $('.icons').first().outerWidth(true);
 }
