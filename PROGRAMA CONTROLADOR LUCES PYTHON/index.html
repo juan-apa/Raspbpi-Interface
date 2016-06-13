@@ -72,7 +72,7 @@
                 </li>
                 <li>
                   <a href="">
-                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                    <i class="fa fa-sun-o" aria-hidden="true"></i>
                   </a>
                 </li>
                 <li>
@@ -91,12 +91,12 @@
           <section class="settings" id="settings">
             <article>
               <ul class="sections">
-                <li class="">
+                <li class="selectedSetting">
                   <a href="#">
                     look and feel
                   </a>
                 </li>
-                <li class="selectedSetting">
+                <li class="">
                   <a href="">
                     lights settings
                   </a>
@@ -118,10 +118,44 @@
                     </div>
                   </a>
                 </li>
-                <li>
+                <li class="sett_colours">
                   <a href="#">
                     colours
                   </a>
+                  <ul class="colourChange">
+
+                    <li>
+                      <div>
+                        header/footer
+                      </div>
+                      <form>
+                        #
+                        <input type="text" name="h/fcolour">
+                      </form>
+                    </li>
+
+                    <li>
+                      <div>
+                        menus
+                      </div>
+                      <form>
+                        #
+                        <input type="text" name="menucolour">
+                      </form>
+                    </li>
+
+                    <li>
+                      <div>
+                        transparency
+                      </div>
+                      <form>
+                        <input type="range" name="transparency" min="0" max="1" step="0.01">
+                      </form>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  otros
                 </li>
               </ul>
               <ul class="lights_settings">
@@ -169,6 +203,33 @@
                       </div>
                     </div>
                   </a>
+                </li>
+              </ul>
+            </article>
+          </section>
+          <section class="alarms" id="alarms">
+            <article>
+              <ul class="daysOfWeek">
+                <li>
+                  Lunes
+                </li>
+                <li>
+                  Martes
+                </li>
+                <li>
+                  Miercoles
+                </li>
+                <li>
+                  Jueves
+                </li>
+                <li>
+                  Viernes
+                </li>
+                <li>
+                  Sabado
+                </li>
+                <li>
+                  Domingo
                 </li>
               </ul>
             </article>
