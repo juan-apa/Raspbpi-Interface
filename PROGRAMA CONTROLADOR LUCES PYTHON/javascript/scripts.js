@@ -191,7 +191,7 @@ function setIconsPosition(){
   /*mientras que el numero que voy sumando sea menor al ancho del ul.icons*/
   /*Tengo quye agregar la condicion de salida del while para que:
     cantidad< cantidadIconosQueTengo*/
-  console.log(getIconsQuantity());
+
   while(aux< anchoUlIconos && cantidad<= cantIconReal){
     aux= aux+ anchoIconos;
     cantidad= cantidad+ 1;
@@ -258,9 +258,6 @@ function goHome(){
     la ventana principal, entonces calculo la nueva alineacion de los iconos de
     ul.icons li*/
     setIconsPosition();
-
-
-  //console.log(alto);
 }
 
 function getheaderHeight(){
