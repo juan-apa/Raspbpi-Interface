@@ -1,18 +1,17 @@
 current_screen= $('.principal');
 $(document).on('ready', function(){
-  //Elements with which i am going to interact
-  btn_settings= $('header ul li.settingsIcon a');
-  btn_home= $('#home');
-  principal= $('.principal');
-  sliders= $('div.slider'); //sliders
-  sett_sett= $('.settings');
-  sett_menus= $('.settings article ul');
-  sett_menuIzq= $('.settings article ul.sections');
-  sett_menuIzqElements= $('.settings article ul.sections li'); //elementos del menu izq de las opciones
-  sett_look_feel= $('.settings article ul.look_feel'); //menu con el contenido de look_feel
-  sett_lights_settings= $('.settings article ul.lights_settings'); //menu con el contenido de lights_settings
-  sett_weather_settings= $('.settings article ul.weather_settings'); //menu con el contenido de weather_settings
-  sett_colours= $('#sett_colours a');
+
+
+  /*Tengo que inicializar las variables, para que cuando inicio la pagina por
+    primera vez, ya tengo las medidas de la pantalla, de lo contrario, tendria
+    que redimensionar la pantalla al menos una vez, para que todo quede a medida
+    y en posicion correcta*/
+  var alturaHeader= getheaderHeight();
+  var anchoPantalla= getScreenWidth();
+  var altoPantalla= getScreenHeight();
+  var anchoIconos= getIconsWidth();
+  var anchoUlIconos= getIconsUlWidth();
+  var cantidadDeIconosReal= getIconsQuantity();
 
 
 
@@ -36,20 +35,8 @@ $(document).on('ready', function(){
 
   setIconsPosition();
 
-  /*Tengo que inicializar las variables, para que cuando inicio la pagina por
-    primera vez, ya tengo las medidas de la pantalla, de lo contrario, tendria
-    que redimensionar la pantalla al menos una vez, para que todo quede a medida
-    y en posicion correcta*/
-  var alturaHeader= getheaderHeight();
-  var anchoPantalla= getScreenWidth();
-  var altoPantalla= getScreenHeight();
-  var anchoIconos= getIconsWidth();
-  var anchoUlIconos= getIconsUlWidth();
-  var cantidadDeIconosReal= getIconsQuantity();
-
   /*This is used for showing the submenus in the settings menus*/
   var actualState= 'folded';
-
 
   goHome();
   /*Set selectedSetting background to the clicked item in the
@@ -64,64 +51,13 @@ $(document).on('ready', function(){
   }
 
 
-  $(sett_menuIzqElements).on('click', function(e){
-    e.preventDefault();
-    var itemClickeado= $(this);
-    if($(this).hasClass('selectedSetting')){
-      //do nothing
-    }
-    else{
-      $(sett_menuIzqElements).removeClass('selectedSetting');
-      $(this).addClass('selectedSetting');
-      var contenido= $(this).text();
-      contenido= contenido.trim();
 
-      var encontrado= false;
-      var i= 0;
-
-      while(!encontrado && i< sett_options_largo){
-        if(sett_options[i]== contenido){
-          encontrado= true; /*Condicion de salida del while*/
-          $(sett_menus).css('display', 'none');
-          $(sett_menuIzq).css('display', 'block');
-          $(sett_screens[i]).css('display', 'block');
-        }
-        else{
-          i++;
-        }
-      }
-      if(contenido== sett_options[0]){
-        if($('.settings article ul li ul.colourChange').hasClass('unfold')){
-          $('.settings article ul li ul.colourChange').css('display', 'block');
-        }
-        else{
-          $('.settings article ul li ul.colourChange').css('display', 'none');
-        }
-      }
-    }
-
-
-
-  });
   $('a').on('click', function(e){
     e.preventDefault();
   });
 
   /*Ultra magic mega functional function*/
-  $('.settings article ul li.sett_colours a').on('click', function(e){
-    e.preventDefault();
 
-    $('.settings article ul li ul.colourChange').toggleClass('unfold');
-    if($('.settings article ul li ul.colourChange').hasClass('unfold')){
-      $('.settings article ul li ul.colourChange').css('display', 'block');
-    }
-    else{
-      $('.settings article ul li ul.colourChange').css('display', 'none');
-    }
-
-
-
-  });
 
 
   $(sliders).on('click', function(e){
