@@ -12,7 +12,7 @@ $(document).on('ready', function(){
   sett_lights_settings= $('.settings article ul.lights_settings'); //menu con el contenido de lights_settings
   sett_weather_settings= $('.settings article ul.weather_settings'); //menu con el contenido de weather_settings
   sett_colours= $('#sett_colours a');
-  var sliders= $('div.sliders')
+  sliders= $('.slider')
 
 
 
@@ -140,10 +140,7 @@ $(document).on('ready', function(){
   });
 
 
-  $(sliders).on('click', function(e){
-    //prevent hyperlink
-    e.preventDefault();
-
+  $(sliders).on('click', function(){
     //Toggle slider ON/OFF
     var sliderClickeado= $(this);
     if($(sliderClickeado).hasClass('ON')){
