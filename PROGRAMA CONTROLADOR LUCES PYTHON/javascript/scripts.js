@@ -12,6 +12,7 @@ $(document).on('ready', function(){
   sett_lights_settings= $('.settings article ul.lights_settings'); //menu con el contenido de lights_settings
   sett_weather_settings= $('.settings article ul.weather_settings'); //menu con el contenido de weather_settings
   sett_colours= $('#sett_colours a');
+  slider= $('.slider');
 
 
 
@@ -120,13 +121,7 @@ $(document).on('ready', function(){
     else{
       $('.settings article ul li ul.colourChange').css('display', 'none');
     }
-
-
-
   });
-
-
-
 
   $(home).on('click', function(e){
     e.preventDefault();
@@ -138,8 +133,20 @@ $(document).on('ready', function(){
     goToSettings();
   });
 
-
+  $(slider).on('click', function(){
+    //Toggle slider ON/OFF
+    var sliderClickeado= $(this);
+    if($(sliderClickeado).hasClass('ON')){
+      $(sliderClickeado).toggleClass('ON');
+      $(sliderClickeado).addClass('OFF');
+    }
+    else{
+      $(sliderClickeado).toggleClass('OFF');
+      $(sliderClickeado).addClass('ON')
+    }
+  });
 });
+/*fin de $(document).on(´ready´)*/
 
 $(window).resize(function(){
 
