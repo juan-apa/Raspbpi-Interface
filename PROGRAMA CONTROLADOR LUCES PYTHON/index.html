@@ -21,10 +21,25 @@
 
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!--Only for when the file is running on electron framework-->
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+    <!-- normal script imports etc  -->
+    <!--this is the jquery file that contains all the jquery functionalities-->
+    <!--this way, i can use the jquery functionality off-line-->
+    <script src="javascript/jquery-1.12.4.js"></script>
+    <!--this is to add the slider functionality to the slider-->
+    <script src="javascript/slider.js"></script>
     <script src="javascript/scripts.js"></script>
     <script src="javascript/reloj.js"></script>
     <script src="javascript/distance.js"></script>
+
+
+    <!-- only for when the file is running on electron framewotk -->
+    <script>if (window.module) module = window.module;</script>
+
+
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">

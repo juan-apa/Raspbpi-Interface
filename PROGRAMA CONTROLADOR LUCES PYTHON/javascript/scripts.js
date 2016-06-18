@@ -4,7 +4,6 @@ $(document).on('ready', function(){
   btn_settings= $('header ul li.settingsIcon a');
   btn_home= $('#home');
   principal= $('.principal');
-  sliders= $('div.slider'); //sliders
   sett_sett= $('.settings');
   sett_menus= $('.settings article ul');
   sett_menuIzq= $('.settings article ul.sections');
@@ -13,6 +12,7 @@ $(document).on('ready', function(){
   sett_lights_settings= $('.settings article ul.lights_settings'); //menu con el contenido de lights_settings
   sett_weather_settings= $('.settings article ul.weather_settings'); //menu con el contenido de weather_settings
   sett_colours= $('#sett_colours a');
+  slider= $('.slider');
 
 
 
@@ -104,6 +104,9 @@ $(document).on('ready', function(){
 
   });
   $('a').on('click', function(e){
+    /*Saca la funcion de hipervinculo de las etiquetas a,
+      de ahora en mas, si quiero ir a algun lugar especifico de la pagina,
+      lo tengo que hacer con javascript con la funcion scrollTop.*/
     e.preventDefault();
   });
 
@@ -118,26 +121,6 @@ $(document).on('ready', function(){
     else{
       $('.settings article ul li ul.colourChange').css('display', 'none');
     }
-
-
-
-  });
-
-
-  $(sliders).on('click', function(e){
-    //prevent hyperlink
-    e.preventDefault();
-
-    //Toggle slider ON/OFF
-    var sliderClickeado= $(this);
-    if($(sliderClickeado).hasClass('ON')){
-      $(sliderClickeado).toggleClass('ON');
-      $(sliderClickeado).addClass('OFF');
-    }
-    else{
-      $(sliderClickeado).toggleClass('OFF');
-      $(sliderClickeado).addClass('ON')
-    }
   });
 
   $(home).on('click', function(e){
@@ -150,8 +133,20 @@ $(document).on('ready', function(){
     goToSettings();
   });
 
-
+  $(slider).on('click', function(){
+    //Toggle slider ON/OFF
+    var sliderClickeado= $(this);
+    if($(sliderClickeado).hasClass('ON')){
+      $(sliderClickeado).toggleClass('ON');
+      $(sliderClickeado).addClass('OFF');
+    }
+    else{
+      $(sliderClickeado).toggleClass('OFF');
+      $(sliderClickeado).addClass('ON')
+    }
+  });
 });
+/*fin de $(document).on(´ready´)*/
 
 $(window).resize(function(){
 
@@ -191,7 +186,7 @@ function setIconsPosition(){
   /*mientras que el numero que voy sumando sea menor al ancho del ul.icons*/
   /*Tengo quye agregar la condicion de salida del while para que:
     cantidad< cantidadIconosQueTengo*/
-
+    
   while(aux< anchoUlIconos && cantidad<= cantIconReal){
     aux= aux+ anchoIconos;
     cantidad= cantidad+ 1;
@@ -234,7 +229,7 @@ function goToSettings(){
   $('.settings').css('display', 'block');
   var altura= getheaderHeight();
   $('html, body').animate({
-    scrollTop: ($('.settings').first().offset().top-altura)
+    scrollTop: ($(sett_sett).first().offset().top-altura)
   },500);
 
   current_screen= $('.settings');
@@ -248,7 +243,7 @@ function goHome(){
     luego 'scrolleo' a la section .principal*/
     var altura= getheaderHeight();
   $('html, body').animate({
-    scrollTop: ($('.principal').first().offset().top-altura)
+    scrollTop: ($(principal).first().offset().top-altura)
   },500);
 
   /*set the current screen as HOME*/
