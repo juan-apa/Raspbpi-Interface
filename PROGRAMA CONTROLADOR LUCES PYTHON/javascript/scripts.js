@@ -1,4 +1,7 @@
 current_screen= $('.principal');
+
+
+
 $(document).on('ready', function(){
   //Elements with which i am going to interact
   btn_settings= $('header ul li.settingsIcon a');
@@ -13,6 +16,7 @@ $(document).on('ready', function(){
   sett_weather_settings= $('.settings article ul.weather_settings'); //menu con el contenido de weather_settings
   sett_colours= $('#sett_colours a');
   slider= $('.slider');
+
 
 
 
@@ -134,11 +138,19 @@ $(document).on('ready', function(){
   });
 
   $(slider).on('click', function(){
+    function doSomething() {
+      $.get("../php/light.php");
+      return false;
+    }
     //Toggle slider ON/OFF
     var sliderClickeado= $(this);
     if($(sliderClickeado).hasClass('ON')){
       $(sliderClickeado).toggleClass('ON');
       $(sliderClickeado).addClass('OFF');
+      //Lines for executing python code
+      doSomething();
+      //End of python execution
+
     }
     else{
       $(sliderClickeado).toggleClass('OFF');
@@ -186,7 +198,7 @@ function setIconsPosition(){
   /*mientras que el numero que voy sumando sea menor al ancho del ul.icons*/
   /*Tengo quye agregar la condicion de salida del while para que:
     cantidad< cantidadIconosQueTengo*/
-    
+
   while(aux< anchoUlIconos && cantidad<= cantIconReal){
     aux= aux+ anchoIconos;
     cantidad= cantidad+ 1;
